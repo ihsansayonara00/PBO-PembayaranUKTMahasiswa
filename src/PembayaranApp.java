@@ -33,6 +33,9 @@ public class PembayaranApp {
 
         panel.add(new JLabel("Hasil:"));
         panel.add(lblHasil);
+
+        // Aksi tombol
+        btnBayar.addActionListener(e -> {
             String nama = tfNama.getText();
             String jumlah = tfJumlah.getText();
 
