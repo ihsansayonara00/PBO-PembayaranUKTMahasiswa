@@ -48,7 +48,7 @@ public class PembayaranApp {
                 lblHasil.setText("Nama: " + nama + " | Bayar: Rp " + jumlah);
             }
         });
-
+//project awal masih dikit mohon maaf
         // Setting frame
         frame.add(panel);
         frame.setSize(400, 250);
