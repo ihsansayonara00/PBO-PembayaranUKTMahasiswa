@@ -22,9 +22,42 @@ public class PembayaranApp {
         JLabel lblHasil = new JLabel(" ", SwingConstants.CENTER);
         lblHasil.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
+        JFrame jFrame= new JFrame("Pembayaran");
+
+        // Warna
+        Color bgColor = new Color(0, 206, 209);
+        Color titleColor = new Color(0, 0, 0);
+        Color btnColor = new Color(255, 250, 205);
+        Color btnText = Color.WHITE;
+
         JPanel panel = new JPanel();
         panel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
         panel.setLayout(new GridLayout(7, 1, 10, 10));
+
+        JLabel Title = new JLabel("FORM PEMBAYARAN", SwingConstants.CENTER);
+        title.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        title.setForeground(titleColor);
+
+        // Komponen input
+        JLabel LblNama = new JLabel("Nama");
+        JTextField Tfnama= new JTextField();
+
+        JLabel LblJumlah = new JLabel("Jumlah Bayar");
+        JTextField TfJumlah = new JTextField();
+        JButton BtnBayar = new JButton("BAYAR");
+        btnBayar.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        btnBayar.setBackground(btnColor);
+        btnBayar.setForeground(btnText);
+        btnBayar.setFocusPainted(false);
+
+        // Hasil
+        JLabel LblHasil = new JLabel(" ", SwingConstants.CENTER);
+        lblHasil.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        lblHasil.setForeground(new Color(0, 120, 60));
+
+        // Styling label
+        lblNama.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        lblJumlah.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
         panel.add(title);
         panel.add(lblNama);
