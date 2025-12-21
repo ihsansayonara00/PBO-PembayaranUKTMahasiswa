@@ -3,55 +3,50 @@ import java.awt.*;
 
 public class PembayaranApp {
 
-    public static void main(String[] args) {
+    public PembayaranApp() {
 
-        // Frame utama
-        JFrame frame = new JFrame("Aplikasi Pembayaran Desktop");
+        JFrame frame = new JFrame("Pembayaran");
 
-        // Komponen
-        JLabel lblNama = new JLabel("Nama:");
-        JTextField tfNama = new JTextField(15);
+        JLabel title = new JLabel("FORM PEMBAYARAN", SwingConstants.CENTER);
+        title.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
-        JLabel lblJumlah = new JLabel("Jumlah Bayar:");
-        JTextField tfJumlah = new JTextField(15);
+        JLabel lblNama = new JLabel("Nama");
+        JTextField tfNama = new JTextField();
 
-        JButton btnBayar = new JButton("Bayar");
+        JLabel lblJumlah = new JLabel("Jumlah Bayar");
+        JTextField tfJumlah = new JTextField();
 
-        JLabel lblHasil = new JLabel(" ");
+        JButton btnBayar = new JButton("BAYAR");
+        btnBayar.setFont(new Font("Segoe UI", Font.BOLD, 14));
 
-        // Panel
-        JPanel panel = new JPanel(new GridLayout(5, 2, 10, 10));
+        JLabel lblHasil = new JLabel(" ", SwingConstants.CENTER);
+        lblHasil.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
+        JPanel panel = new JPanel();
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
+        panel.setLayout(new GridLayout(7, 1, 10, 10));
+
+        panel.add(title);
         panel.add(lblNama);
         panel.add(tfNama);
-
         panel.add(lblJumlah);
         panel.add(tfJumlah);
-
-        panel.add(new JLabel());
         panel.add(btnBayar);
-
-        panel.add(new JLabel("Hasil:"));
         panel.add(lblHasil);
 
-        // Aksi tombol
         btnBayar.addActionListener(e -> {
             String nama = tfNama.getText();
             String jumlah = tfJumlah.getText();
 
             if (nama.isEmpty() || jumlah.isEmpty()) {
-                JOptionPane.showMessageDialog(frame,
-                        "Data tidak boleh kosong!",
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(frame, "Data tidak boleh kosong!");
             } else {
-                lblHasil.setText("Nama: " + nama + " | Bayar: Rp " + jumlah);
+                lblHasil.setText("✔ " + nama + " membayar Rp " + jumlah);
             }
         });
-//project awal masih dikit mohon maaf
-        // Setting frame
+
         frame.add(panel);
-        frame.setSize(400, 250);
+        frame.setSize(400, 350);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
