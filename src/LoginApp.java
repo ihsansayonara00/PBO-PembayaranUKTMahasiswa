@@ -49,7 +49,7 @@ public class LoginApp {
         });
 
         frame.add(panel);
-        frame.setSize(350, 300);
+        frame.setSize(450, 420);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
