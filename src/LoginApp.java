@@ -11,7 +11,7 @@ public class LoginApp {
         } catch (Exception ignored) {}
 
         JFrame frame = new JFrame("Login");
-
+        //Edit
         JLabel title = new JLabel("LOGIN APLIKASI", SwingConstants.CENTER);
         title.setFont(new Font("Segoe UI", Font.BOLD, 20));
 
