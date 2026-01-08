@@ -31,7 +31,7 @@ public class PembayaranApp {
                 "BCA",
                 "BRI",
                 "BNI",
-                "Mandiri",
+                "MANDIRI",
                 "BTN"
         };
 
@@ -46,19 +46,9 @@ public class PembayaranApp {
         btnBayar.setBackground(btnColor);
         btnBayar.setForeground(Color.WHITE);
         btnBayar.setFocusPainted(false);
-
-
-
         JLabel lblHasil = new JLabel(" ", SwingConstants.CENTER);
         lblHasil.setFont(new Font("Segoe UI", Font.BOLD, 14));
         lblHasil.setForeground(new Color(0, 120, 60));
-
-
-
-
-
-
-
 
         panel.add(title);
         panel.add(lblNama);
