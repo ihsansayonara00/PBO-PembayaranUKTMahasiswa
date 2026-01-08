@@ -1,5 +1,5 @@
 import javax.swing.*;
-
+//memperbaiki conflig
 public class Main {
     public static void main(String[] args) {
 
