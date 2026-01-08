@@ -52,7 +52,7 @@ public class LoginApp {
             if (user.equals("mahasiswa") && pass.equals("123456")) {
                 JOptionPane.showMessageDialog(frame, "Login berhasil!");
                 frame.dispose();
-                new PembayaranApp(nim); // ⬅ kirim NIM
+                new PembayaranApp(nim);
             } else {
                 JOptionPane.showMessageDialog(frame, "Username atau password salah!");
             }
