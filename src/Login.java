@@ -19,6 +19,10 @@ public class Login {
             JButton btnLogin = new JButton("LOGIN");
             btnLogin.setFont(new Font("Segoe UI", Font.BOLD, 14));
 
+            btnLogin.setBackground(new Color(0, 170, 90)); // hijau
+            btnLogin.setForeground(Color.WHITE);           // teks putih
+            btnLogin.setFocusPainted(false);
+
             JPanel panel = new JPanel();
             panel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
             panel.setLayout(new GridLayout(6, 1, 10, 10));
