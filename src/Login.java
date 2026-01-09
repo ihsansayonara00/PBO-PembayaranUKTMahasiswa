@@ -45,10 +45,11 @@ public class Login {
                 String passBenar = "2026";
 
 
-                if (nim.equals(nimBenar) && pass.equals(passBenar)) {
+
+                if (nim.equals("300") && pass.equals("2026")) {
                     JOptionPane.showMessageDialog(frame, "Login berhasil!");
                     frame.dispose();
-                    new PembayaranApp();
+                    new Dashboard("Ahmad Pratama", nim);
                 } else if (!nim.equals(nimBenar)) {
 
                     JOptionPane.showMessageDialog(

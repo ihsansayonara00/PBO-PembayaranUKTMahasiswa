@@ -6,7 +6,7 @@ public class PembayaranApp {
     public PembayaranApp() {
 
         JFrame frame = new JFrame("Pembayaran");
-
+        //warna dari pembayaran di atas
         Color bgColor = new Color(220, 245, 220);
         Color titleColor = new Color(0, 100, 60);
         Color btnColor = new Color(0, 170, 90);
