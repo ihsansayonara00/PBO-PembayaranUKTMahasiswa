@@ -19,7 +19,10 @@ public class Login {
             JButton btnLogin = new JButton("LOGIN");
             btnLogin.setFont(new Font("Segoe UI", Font.BOLD, 14));
             //menambahkan warna di tombobl login
-            btnLogin.setBackground(new Color(0, 170, 90)); // hijau
+
+
+
+            btnLogin.setBackground(new Color(52, 152, 219)); // biru
             btnLogin.setForeground(Color.WHITE);           // teks putih
             btnLogin.setFocusPainted(false);
 
