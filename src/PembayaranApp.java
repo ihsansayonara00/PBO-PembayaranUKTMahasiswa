@@ -14,7 +14,7 @@ public class PembayaranApp {
         JPanel panel = new JPanel();
         panel.setBackground(bgColor);
         panel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
-        panel.setLayout(new GridLayout(9, 1, 12, 12));
+        panel.setLayout(new GridLayout(11, 1, 12, 12));
 
         JLabel title = new JLabel("FORM PEMBAYARAN", SwingConstants.CENTER);
         title.setFont(new Font("Segoe UI", Font.BOLD, 22));
@@ -23,6 +23,9 @@ public class PembayaranApp {
         JLabel lblNama = new JLabel("Nama");
         lblNama.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         JTextField tfNama = new JTextField();
+
+        JLabel lblMahasiswa = new JLabel("Mahasiswa (NIM)");
+        JTextField tfMahasiswa = new JTextField();
 
         JLabel LblBank = new JLabel("Pilih Bank");
         LblBank.setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -54,6 +57,8 @@ public class PembayaranApp {
         panel.add(lblNama);
         panel.add(tfNama);
         panel.add(cbBank);
+        panel.add(lblMahasiswa);
+        panel.add(tfMahasiswa);
         panel.add(lblJumlah);
         panel.add(tfJumlah);
         panel.add(btnBayar);
