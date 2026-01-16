@@ -27,8 +27,10 @@ public class Login {
             btnLogin.setFocusPainted(false);
 
             JPanel panel = new JPanel();
+            panel.setBackground(new Color(204, 255, 204)); // hijau muda
             panel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
             panel.setLayout(new GridLayout(6, 1, 10, 10));
+
 
             panel.add(title);
             panel.add(lblNim);
