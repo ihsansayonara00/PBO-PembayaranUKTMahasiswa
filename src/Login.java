@@ -1,11 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Login {
+public class Login extends JFrame { // pewarisan
 
 
         public Login() {
-            JFrame frame = new JFrame("Login");
+            //Kita sudah tidak lagi memaki jframe di sini
+            setTitle("Login");
+            setSize(450, 420);
+            setLocationRelativeTo(null);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JLabel title = new JLabel("LOGIN APLIKASI", SwingConstants.CENTER);
             title.setFont(new Font("Segoe UI", Font.BOLD, 20));
@@ -49,27 +53,24 @@ public class Login {
 
 
                 if (nim.equals("300") && pass.equals("2026")) {
-                    JOptionPane.showMessageDialog(frame, "Login berhasil!");
-                    frame.dispose();
+                    JOptionPane.showMessageDialog(this, "Login berhasil!");
+                    dispose();
                     new Dashboard("Ahmad Pratama", nim);
                 } else if (!nim.equals(nimBenar)) {
 
                     JOptionPane.showMessageDialog(
-                            frame,
+                            this,
                             "NIM Mahasiswa tidak terdaftar!",
                             "Login Gagal",
                             JOptionPane.ERROR_MESSAGE
                     );
                 } else {
-                    JOptionPane.showMessageDialog(frame, "Username atau password salah!");
+                    JOptionPane.showMessageDialog(this, "Username atau password salah!");
                 }
             });
+            add(panel);
+            setVisible(true);
 
-            frame.add(panel);
-            frame.setSize(450, 420);
-            frame.setLocationRelativeTo(null);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
         }
     }
 

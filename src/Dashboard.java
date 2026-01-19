@@ -1,14 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Dashboard {
+public class Dashboard extends JFrame{
 
     public Dashboard(String nama, String nim) {
 
-        JFrame frame = new JFrame("Dashboard Mahasiswa");
-        frame.setSize(900, 500);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Dashboard Mahasiswa");
+        setSize(900, 500);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // WARNA
         Color green = new Color(34, 139, 34);
@@ -94,12 +94,12 @@ public class Dashboard {
 
 
         btnBayar.addActionListener(e -> {
-            frame.dispose();
+            dispose();
             new PembayaranApp(nama, nim);
         });
 
         btnLogout.addActionListener(e -> {
-            frame.dispose();
+            dispose();
             new Login();
         });
 
@@ -108,7 +108,7 @@ public class Dashboard {
         mainPanel.add(header, BorderLayout.NORTH);
         mainPanel.add(content, BorderLayout.CENTER);
 
-        frame.add(mainPanel);
-        frame.setVisible(true);
+        add(mainPanel);
+        setVisible(true);
     }
 }
