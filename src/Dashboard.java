@@ -92,10 +92,10 @@ public class Dashboard {
         content.add(cardStatus);
         content.add(cardInfo);
 
-        // ACTION
+
         btnBayar.addActionListener(e -> {
             frame.dispose();
-            new PembayaranApp();
+            new PembayaranApp(nama, nim);
         });
 
         btnLogout.addActionListener(e -> {

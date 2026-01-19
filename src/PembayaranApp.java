@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class PembayaranApp {
 
-    public PembayaranApp() {
+    public PembayaranApp(String namaDashboard, String nimDashboard) {
 
         JFrame frame = new JFrame("Pembayaran");
         //warna dari pembayaran di atas
@@ -21,11 +21,12 @@ public class PembayaranApp {
         title.setForeground(titleColor);
 
         JLabel lblNama = new JLabel("Nama");
-        lblNama.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        JTextField tfNama = new JTextField();
+        JTextField tfNama = new JTextField(namaDashboard);
+        tfNama.setEditable(false);
 
         JLabel lblMahasiswa = new JLabel("Mahasiswa (NIM)");
-        JTextField tfMahasiswa = new JTextField();
+        JTextField tfMahasiswa = new JTextField(nimDashboard);
+        tfMahasiswa.setEditable(false);
 
         JLabel LblBank = new JLabel("Pilih Bank");
         LblBank.setFont(new Font("Segoe UI", Font.PLAIN, 14));
@@ -56,6 +57,8 @@ public class PembayaranApp {
         panel.add(title);
         panel.add(lblNama);
         panel.add(tfNama);
+        panel.add(lblMahasiswa);
+        panel.add(tfMahasiswa);
         panel.add(cbBank);
         panel.add(lblMahasiswa);
         panel.add(tfMahasiswa);
@@ -74,7 +77,14 @@ public class PembayaranApp {
                         frame, "Data tidak boleh kosong!",
                         "warning", JOptionPane.WARNING_MESSAGE);
             } else {
-                lblHasil.setText("✔ " + nama + " membayar Rp " + jumlah + "via" + bank);
+                JOptionPane.showMessageDialog(
+                        frame,
+                        "Pembayaran berhasil!",
+                        "Sukses",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                frame.dispose();
+                new Dashboard(namaDashboard, nimDashboard);
             }
         });
 
