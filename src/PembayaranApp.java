@@ -1,7 +1,9 @@
+import jdk.jfr.TransitionFrom;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class PembayaranApp {
+public class PembayaranApp  {
 
     public PembayaranApp(String namaDashboard, String nimDashboard) {
 

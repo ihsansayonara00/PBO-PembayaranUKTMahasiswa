@@ -98,6 +98,11 @@ public class Dashboard extends JFrame{
             new PembayaranApp(nama, nim);
         });
 
+        btnRiwayat.addActionListener(e -> {
+            dispose();
+            new RiwayatTransaksi(nama, nim);
+        });
+
         btnLogout.addActionListener(e -> {
             dispose();
             new Login();
