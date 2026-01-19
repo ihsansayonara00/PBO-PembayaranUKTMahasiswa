@@ -5,7 +5,6 @@ import java.util.List;
 
 public class RiwayatTransaksi extends JFrame {
 
-    // contoh data riwayat (sementara)
     private List<String> riwayat = new ArrayList<>();
 
     public RiwayatTransaksi(String nama, String nim) {
@@ -15,7 +14,6 @@ public class RiwayatTransaksi extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // contoh isi riwayat
         riwayat.add("15-02-2026 | UKT | Rp 7.500.000 | BCA");
 
         JPanel panel = new JPanel(new BorderLayout(10,10));
@@ -51,5 +49,11 @@ public class RiwayatTransaksi extends JFrame {
 
         add(panel);
         setVisible(true);
+    }
+
+    @Override
+    public void dispose() {
+        // Jika mau tambahkan logika sebelum dispose, bisa di sini
+        super.dispose();
     }
 }
