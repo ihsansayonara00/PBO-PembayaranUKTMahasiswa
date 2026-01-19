@@ -3,22 +3,43 @@ import java.awt.*;
 
 public class Dashboard extends JFrame{
 
+    private JButton createSidebarButton(String text, String iconPath) {
+        JButton button = new JButton(text);
+
+        // Set icon dari folder resources
+        button.setIcon(new ImageIcon(getClass().getResource(iconPath)));
+
+        // Posisi icon di kiri teks
+        button.setHorizontalAlignment(SwingConstants.LEFT);
+        button.setIconTextGap(10);
+
+        // Styling tombol
+        button.setFocusPainted(false);
+        button.setBackground(Color.WHITE);
+
+        return button;
+    }
+
+
+
     public Dashboard(String nama, String nim) {
+
+
 
         setTitle("Dashboard Mahasiswa");
         setSize(900, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // WARNA
+
         Color green = new Color(34, 139, 34);
         Color bg = new Color(245, 247, 249);
 
-        // MAIN PANEL
+
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(bg);
 
-        // SIDEBAR
+
         JPanel sidebar = new JPanel();
         sidebar.setPreferredSize(new Dimension(180, 0));
         sidebar.setBackground(Color.WHITE);
@@ -40,7 +61,7 @@ public class Dashboard extends JFrame{
         sidebar.add(new JLabel());
         sidebar.add(btnLogout);
 
-        // HEADER
+
         JPanel header = new JPanel(new BorderLayout());
         header.setBackground(green);
         header.setPreferredSize(new Dimension(0, 100));
@@ -55,13 +76,13 @@ public class Dashboard extends JFrame{
 
         header.add(lblWelcome, BorderLayout.WEST);
 
-        // CONTENT
+
         JPanel content = new JPanel();
         content.setBackground(bg);
         content.setLayout(new GridLayout(2, 1, 15, 15));
         content.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // CARD STATUS PEMBAYARAN
+
         JPanel cardStatus = new JPanel(new GridLayout(3, 2, 10, 10));
         cardStatus.setBackground(Color.WHITE);
         cardStatus.setBorder(BorderFactory.createTitledBorder("Status Pembayaran"));
@@ -75,7 +96,7 @@ public class Dashboard extends JFrame{
         cardStatus.add(new JLabel("Batas Pembayaran"));
         cardStatus.add(new JLabel("15 Februari 2026"));
 
-        // iNFORMASI MAHASISWA
+
         JPanel cardInfo = new JPanel(new GridLayout(3, 2, 10, 10));
         cardInfo.setBackground(Color.WHITE);
         cardInfo.setBorder(BorderFactory.createTitledBorder("Informasi Mahasiswa"));

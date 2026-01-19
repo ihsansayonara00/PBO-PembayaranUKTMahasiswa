@@ -1,57 +1,55 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RiwayatTransaksi {
+public class RiwayatTransaksi extends JFrame {
 
-    private String nama;
-    private String nim;
+    // contoh data riwayat (sementara)
+    private List<String> riwayat = new ArrayList<>();
 
     public RiwayatTransaksi(String nama, String nim) {
-        this.nama = nama;
-        this.nim = nim;
-        initUI();
-    }
 
-    private void initUI() {
-        JFrame frame = new JFrame("Riwayat Transaksi");
-        frame.setSize(600, 400);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setTitle("Riwayat Transaksi");
+        setSize(500, 400);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        // contoh isi riwayat
+        riwayat.add("15-02-2026 | UKT | Rp 7.500.000 | BCA");
 
-        JLabel title = new JLabel("Riwayat Transaksi Mahasiswa", SwingConstants.CENTER);
-        title.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        panel.add(title, BorderLayout.NORTH);
+        JPanel panel = new JPanel(new BorderLayout(10,10));
+        panel.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
 
+        JLabel header = new JLabel(
+                "<html><b>Nama:</b> " + nama +
+                        "<br><b>NIM:</b> " + nim +
+                        "<br><br><b>Riwayat Pembayaran</b></html>"
+        );
+        header.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 
-        String[] columns = {"No", "Tanggal", "Jumlah Bayar", "Bank", "Status"};
-        DefaultTableModel model = new DefaultTableModel(columns, 0);
+        JTextArea area = new JTextArea();
+        area.setEditable(false);
 
-
-        model.addRow(new Object[]{1, "2026-01-01", "Rp 2.500.000", "BCA", "Lunas"});
-        model.addRow(new Object[]{2, "2026-02-01", "Rp 2.500.000", "Mandiri", "Lunas"});
-        model.addRow(new Object[]{3, "2026-03-01", "Rp 2.500.000", "BNI", "Belum Bayar"});
-
-        JTable table = new JTable(model);
-        JScrollPane scrollPane = new JScrollPane(table);
-        panel.add(scrollPane, BorderLayout.CENTER);
-
+        if (riwayat.isEmpty()) {
+            area.setText("Belum ada transaksi.");
+        } else {
+            for (String s : riwayat) {
+                area.append(s + "\n");
+            }
+        }
 
         JButton btnKembali = new JButton("Kembali");
-        btnKembali.setBackground(new Color(52, 152, 219));
-        btnKembali.setForeground(Color.WHITE);
-        btnKembali.setFocusPainted(false);
         btnKembali.addActionListener(e -> {
-            frame.dispose();
+            dispose();
             new Dashboard(nama, nim);
         });
 
+        panel.add(header, BorderLayout.NORTH);
+        panel.add(new JScrollPane(area), BorderLayout.CENTER);
         panel.add(btnKembali, BorderLayout.SOUTH);
 
-        frame.add(panel);
-        frame.setVisible(true);
+        add(panel);
+        setVisible(true);
     }
 }

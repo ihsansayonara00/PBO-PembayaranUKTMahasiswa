@@ -55,7 +55,7 @@ public class Login extends JFrame { // pewarisan
                 if (nim.equals("300") && pass.equals("2026")) {
                     JOptionPane.showMessageDialog(this, "Login berhasil!");
                     dispose();
-                    new Dashboard("Ahmad Pratama", nim);
+                    new Dashboard("Septian ihsandi", nim);
                 } else if (!nim.equals(nimBenar)) {
 
                     JOptionPane.showMessageDialog(
