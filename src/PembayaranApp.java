@@ -1,9 +1,14 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PembayaranApp {
 
+    public static List<List<String>> semuaTransaksi = new ArrayList<>();
     public PembayaranApp(String namaDashboard, String nimDashboard) {
 
         JFrame frame = new JFrame("Pembayaran");
@@ -54,7 +59,7 @@ public class PembayaranApp {
         btnKembali.setForeground(Color.WHITE);
         btnKembali.setFocusPainted(false);
 
-        // Menambahkan komponen ke panel
+
         panel.add(title);
         panel.add(lblNama);
         panel.add(tfNama);
@@ -66,9 +71,9 @@ public class PembayaranApp {
         panel.add(tfJumlah);
         panel.add(btnBayar);
         panel.add(lblHasil);
-        panel.add(btnKembali); // Tambahkan tombol Kembali di bawah
+        panel.add(btnKembali);
 
-        // Action Listener BAYAR
+
         btnBayar.addActionListener(e -> {
             String nama = tfNama.getText();
             String bank = cbBank.getSelectedItem().toString();
@@ -80,18 +85,29 @@ public class PembayaranApp {
                         "Warning", JOptionPane.WARNING_MESSAGE
                 );
             } else {
+
+                String kodeBayar = "PAY-" + System.currentTimeMillis();
+
+
+                String tanggal = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                List<String> transaksi = List.of(tanggal, "UKT", "Rp " + jumlah, bank, kodeBayar);
+                semuaTransaksi.add(transaksi);
+
                 JOptionPane.showMessageDialog(
                         frame,
-                        "Pembayaran berhasil!",
+                        "Pembayaran berhasil!\nKode Pembayaran: " + kodeBayar,
                         "Sukses",
                         JOptionPane.INFORMATION_MESSAGE
                 );
+
                 frame.dispose();
-                new Dashboard(namaDashboard, nimDashboard);
+
+
+                new RiwayatTransaksi(nama, nimDashboard);
             }
         });
 
-        // Action Listener KEMBALI
+
         btnKembali.addActionListener(e -> {
             frame.dispose();
             new Dashboard(namaDashboard, nimDashboard);
