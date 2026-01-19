@@ -32,28 +32,32 @@ public class Dashboard extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(bg);
 
+        // Sidebar
         JPanel sidebar = new JPanel();
         sidebar.setPreferredSize(new Dimension(180, 0));
         sidebar.setBackground(Color.WHITE);
-        sidebar.setLayout(new GridLayout(7, 1, 10, 10));
+        sidebar.setLayout(new GridLayout(8, 1, 10, 10));
         sidebar.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 
-        // Membuat tombol dengan ikon (sesuaikan path ikon di folder /icons)
-        JButton btnDashboard = createSidebarButton("Dashboard", "/icons/dashboard.png.png");
-        JButton btnTagihan = createSidebarButton("Tagihan UKT", "/icons/Tagihan.png.png");
-        JButton btnBayar = createSidebarButton("Pembayaran", "/icons/Pembayaran.png.png");
-        JButton btnRiwayat = createSidebarButton("Riwayat", "/icons/Riwayat.png.png");
-        JButton btnLogout = createSidebarButton("Logout", "/icons/Logout.png.png");
+        // Tombol sidebar
+        JButton btnDashboard = createSidebarButton("Dashboard", "/icons/dashboard.png");
+        JButton btnProfile = createSidebarButton("Profile", "/icons/profile.png"); // tombol profile
+        JButton btnTagihan = createSidebarButton("Tagihan UKT", "/icons/Tagihan.png");
+        JButton btnBayar = createSidebarButton("Pembayaran", "/icons/Pembayaran.png");
+        JButton btnRiwayat = createSidebarButton("Riwayat", "/icons/Riwayat.png");
+        JButton btnLogout = createSidebarButton("Logout", "/icons/Logout.png");
 
         btnLogout.setForeground(Color.RED);
 
         sidebar.add(btnDashboard);
+        sidebar.add(btnProfile); // tambahkan tombol profile
         sidebar.add(btnTagihan);
         sidebar.add(btnBayar);
         sidebar.add(btnRiwayat);
         sidebar.add(new JLabel());
         sidebar.add(btnLogout);
 
+        // Header
         JPanel header = new JPanel(new BorderLayout());
         header.setBackground(green);
         header.setPreferredSize(new Dimension(0, 100));
@@ -68,6 +72,7 @@ public class Dashboard extends JFrame {
 
         header.add(lblWelcome, BorderLayout.WEST);
 
+        // Content Dashboard
         JPanel content = new JPanel();
         content.setBackground(bg);
         content.setLayout(new GridLayout(2, 1, 15, 15));
@@ -79,10 +84,8 @@ public class Dashboard extends JFrame {
 
         cardStatus.add(new JLabel("Total Tagihan"));
         cardStatus.add(new JLabel("Rp 7.500.000"));
-
         cardStatus.add(new JLabel("Status"));
         cardStatus.add(new JLabel("Belum Bayar"));
-
         cardStatus.add(new JLabel("Batas Pembayaran"));
         cardStatus.add(new JLabel("15 Februari 2026"));
 
@@ -92,20 +95,30 @@ public class Dashboard extends JFrame {
 
         cardInfo.add(new JLabel("Nama"));
         cardInfo.add(new JLabel(nama));
-
         cardInfo.add(new JLabel("Fakultas"));
         cardInfo.add(new JLabel("Fakultas Teknik"));
-
         cardInfo.add(new JLabel("Program Studi"));
         cardInfo.add(new JLabel("Teknik Informatika"));
 
         content.add(cardStatus);
         content.add(cardInfo);
 
-        // Action Listener untuk tombol
-        btnDashboard.addActionListener(e -> {
+        // Action Listener tombol
+        btnDashboard.addActionListener(e ->
+                JOptionPane.showMessageDialog(this, "Anda sudah di Dashboard."));
 
-            JOptionPane.showMessageDialog(this, "Anda sudah di Dashboard.");
+        btnProfile.addActionListener(e -> {
+            dispose();
+            new ProfileMahasiswa(
+                    nim,
+                    nama,
+                    "Fakultas Teknik",  // bisa diganti sesuai data
+                    "2023",             // angkatan
+                    "Teknik Informatika",
+                    "septian@mail.com",
+                    "081234567890",
+                    "/icons/profile.png"
+            );
         });
 
         btnTagihan.addActionListener(e -> {

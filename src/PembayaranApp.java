@@ -1,14 +1,12 @@
-import jdk.jfr.TransitionFrom;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class PembayaranApp  {
+public class PembayaranApp {
 
     public PembayaranApp(String namaDashboard, String nimDashboard) {
 
         JFrame frame = new JFrame("Pembayaran");
-        //warna dari pembayaran di atas
+        // Warna
         Color bgColor = new Color(220, 245, 220);
         Color titleColor = new Color(0, 100, 60);
         Color btnColor = new Color(0, 170, 90);
@@ -16,7 +14,7 @@ public class PembayaranApp  {
         JPanel panel = new JPanel();
         panel.setBackground(bgColor);
         panel.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
-        panel.setLayout(new GridLayout(11, 1, 12, 12));
+        panel.setLayout(new GridLayout(12, 1, 12, 12)); // Tambah 1 baris untuk tombol Kembali
 
         JLabel title = new JLabel("FORM PEMBAYARAN", SwingConstants.CENTER);
         title.setFont(new Font("Segoe UI", Font.BOLD, 22));
@@ -30,17 +28,9 @@ public class PembayaranApp  {
         JTextField tfMahasiswa = new JTextField(nimDashboard);
         tfMahasiswa.setEditable(false);
 
-        JLabel LblBank = new JLabel("Pilih Bank");
-        LblBank.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        String[] bankList = {
-                "-- Pilih Bank --",
-                "BCA",
-                "BRI",
-                "BNI",
-                "MANDIRI",
-                "BTN"
-        };
-
+        JLabel lblBank = new JLabel("Pilih Bank");
+        lblBank.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        String[] bankList = {"-- Pilih Bank --", "BCA", "BRI", "BNI", "MANDIRI", "BTN"};
         JComboBox<String> cbBank = new JComboBox<>(bankList);
 
         JLabel lblJumlah = new JLabel("Jumlah Bayar");
@@ -52,46 +42,62 @@ public class PembayaranApp  {
         btnBayar.setBackground(btnColor);
         btnBayar.setForeground(Color.WHITE);
         btnBayar.setFocusPainted(false);
+
         JLabel lblHasil = new JLabel(" ", SwingConstants.CENTER);
         lblHasil.setFont(new Font("Segoe UI", Font.BOLD, 14));
         lblHasil.setForeground(new Color(0, 120, 60));
 
+        JButton btnKembali = new JButton("KEMBALI");
+        btnKembali.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        btnKembali.setBackground(Color.RED);
+        btnKembali.setForeground(Color.WHITE);
+        btnKembali.setFocusPainted(false);
+
+        // Menambahkan komponen ke panel
         panel.add(title);
         panel.add(lblNama);
         panel.add(tfNama);
         panel.add(lblMahasiswa);
         panel.add(tfMahasiswa);
+        panel.add(lblBank);
         panel.add(cbBank);
-        panel.add(lblMahasiswa);
-        panel.add(tfMahasiswa);
         panel.add(lblJumlah);
         panel.add(tfJumlah);
         panel.add(btnBayar);
         panel.add(lblHasil);
+        panel.add(btnKembali); // Tambahkan tombol Kembali di bawah
 
+        // Action Listener BAYAR
         btnBayar.addActionListener(e -> {
             String nama = tfNama.getText();
             String bank = cbBank.getSelectedItem().toString();
             String jumlah = tfJumlah.getText();
 
-            if (nama.isEmpty() || jumlah.isEmpty () || bank.equals("pilih bank")) {
+            if (nama.isEmpty() || jumlah.isEmpty() || bank.equals("-- Pilih Bank --")) {
                 JOptionPane.showMessageDialog(
                         frame, "Data tidak boleh kosong!",
-                        "warning", JOptionPane.WARNING_MESSAGE);
+                        "Warning", JOptionPane.WARNING_MESSAGE
+                );
             } else {
                 JOptionPane.showMessageDialog(
                         frame,
                         "Pembayaran berhasil!",
                         "Sukses",
-                        JOptionPane.INFORMATION_MESSAGE);
-
+                        JOptionPane.INFORMATION_MESSAGE
+                );
                 frame.dispose();
                 new Dashboard(namaDashboard, nimDashboard);
             }
         });
 
+        // Action Listener KEMBALI
+        btnKembali.addActionListener(e -> {
+            frame.dispose();
+            new Dashboard(namaDashboard, nimDashboard);
+        });
+
         frame.add(panel);
-        frame.setSize(400, 350);
+        frame.setSize(400, 400);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
