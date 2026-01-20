@@ -5,7 +5,7 @@ public class Login extends JFrame { // pewarisan
 
 
         public Login() {
-            //Kita sudah tidak lagi memaki jframe di sini
+
             setTitle("Login");
             setSize(450, 420);
             setLocationRelativeTo(null);

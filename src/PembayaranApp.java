@@ -12,7 +12,7 @@ public class PembayaranApp {
     public PembayaranApp(String namaDashboard, String nimDashboard) {
 
         JFrame frame = new JFrame("Pembayaran");
-        // Warna
+
         Color bgColor = new Color(220, 245, 220);
         Color titleColor = new Color(0, 100, 60);
         Color btnColor = new Color(0, 170, 90);

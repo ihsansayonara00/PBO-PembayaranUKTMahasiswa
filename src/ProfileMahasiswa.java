@@ -12,24 +12,24 @@ public class ProfileMahasiswa extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // warna background utama
+
         Color bg = new Color(245, 247, 249);
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(bg);
         mainPanel.setLayout(new BorderLayout());
 
-        // ---------------- HEADER ----------------
+
         JPanel header = new JPanel();
         header.setBackground(new Color(52, 152, 219));
         header.setPreferredSize(new Dimension(0, 180));
         header.setLayout(null); // absolute positioning untuk foto
 
-        // Foto profil
+
         JLabel lblFoto;
         ImageIcon icon;
         if (getClass().getResource(fotoPath) != null) {
             icon = new ImageIcon(getClass().getResource(fotoPath));
-            // resize gambar agar bulat
+
             Image img = icon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
             icon = new ImageIcon(img);
         } else {
@@ -46,7 +46,7 @@ public class ProfileMahasiswa extends JFrame {
         lblFoto.setHorizontalTextPosition(JLabel.CENTER);
         lblFoto.setVerticalTextPosition(JLabel.BOTTOM);
 
-        // Nama di header
+
         JLabel lblNama = new JLabel(nama, SwingConstants.CENTER);
         lblNama.setForeground(Color.WHITE);
         lblNama.setFont(new Font("Segoe UI", Font.BOLD, 20));
@@ -55,7 +55,6 @@ public class ProfileMahasiswa extends JFrame {
         header.add(lblFoto);
         header.add(lblNama);
 
-        // ---------------- INFO PANEL ----------------
         JPanel infoPanel = new JPanel();
         infoPanel.setBackground(bg);
         infoPanel.setLayout(new GridLayout(7, 1, 10, 10));

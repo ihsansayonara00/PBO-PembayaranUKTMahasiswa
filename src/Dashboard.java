@@ -2,13 +2,26 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Dashboard extends JFrame {
+    private ImageIcon resizeIcon(String path, int width, int height) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            ImageIcon icon = new ImageIcon(imgURL);
+            Image img = icon.getImage();
+
+            Image resizedImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            return new ImageIcon(resizedImg);
+        }
+        return null;
+    }
+
 
     private JButton createSidebarButton(String text, String iconPath) {
         JButton button = new JButton(text);
 
-        // Set icon dari folder resources jika ada
-        if (getClass().getResource(iconPath) != null) {
-            button.setIcon(new ImageIcon(getClass().getResource(iconPath)));
+
+        ImageIcon icon = resizeIcon(iconPath, 18, 18); // ukuran 18x18 pixel
+        if (icon != null) {
+            button.setIcon(icon);
         }
 
         button.setHorizontalAlignment(SwingConstants.LEFT);
@@ -19,6 +32,7 @@ public class Dashboard extends JFrame {
 
         return button;
     }
+
 
     public Dashboard(String nama, String nim) {
         setTitle("Dashboard Mahasiswa");
@@ -41,7 +55,7 @@ public class Dashboard extends JFrame {
 
         // Tombol sidebar
         JButton btnDashboard = createSidebarButton("Dashboard", "/icons/dashboard.png");
-        JButton btnProfile = createSidebarButton("Profile", "/icons/profile.png"); // tombol profile
+        JButton btnProfile = createSidebarButton("Profile", "/icons/profile.png");
         JButton btnTagihan = createSidebarButton("Tagihan UKT", "/icons/Tagihan.png");
         JButton btnBayar = createSidebarButton("Pembayaran", "/icons/Pembayaran.png");
         JButton btnRiwayat = createSidebarButton("Riwayat", "/icons/Riwayat.png");
@@ -50,7 +64,7 @@ public class Dashboard extends JFrame {
         btnLogout.setForeground(Color.RED);
 
         sidebar.add(btnDashboard);
-        sidebar.add(btnProfile); // tambahkan tombol profile
+        sidebar.add(btnProfile);
         sidebar.add(btnTagihan);
         sidebar.add(btnBayar);
         sidebar.add(btnRiwayat);
@@ -103,7 +117,9 @@ public class Dashboard extends JFrame {
         content.add(cardStatus);
         content.add(cardInfo);
 
-        // Action Listener tombol
+
+
+
         btnDashboard.addActionListener(e ->
                 JOptionPane.showMessageDialog(this, "Anda sudah di Dashboard."));
 
@@ -120,6 +136,8 @@ public class Dashboard extends JFrame {
                     "/icons/profile.png"
             );
         });
+
+
 
         btnTagihan.addActionListener(e -> {
             dispose();
